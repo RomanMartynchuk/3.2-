@@ -1,0 +1,30 @@
+def send_email(message, recipient,*, sender = "university.help@gmail.com"):
+    nal = [] # список заполняется в случае отсутствия '@', '.com', ".ru", ".net"
+    nal2 = [] # сиписок для вывода иных случаев
+    cod_mail = ['@', '.com', ".ru", ".net"]
+    for i in cod_mail:
+        if i not in recipient:
+            nal.append(1)
+        if len(nal) == 3:
+            print("Невозможно отправить письмо с адреса <",sender,"> на адрес <",recipient,">.")
+            nal2.append(1)
+    nal = []# список заполняется в случае отсутствия '@', '.com', ".ru", ".net"
+    for i in cod_mail:
+        if i not in sender:
+            nal.append(1)
+        if len(nal) > 2:
+            print("Невозможно отправить письмо с адреса <",sender,"> на адрес <",recipient,">.")
+            nal2.append(1)
+    if sender == recipient:
+        print("Нельзя отправить письмо самому себе!")
+        nal2.append(1)
+    if sender == "university.help@gmail.com":
+        print("Письмо успешно отправлено с адреса <",sender,"> на адрес <",recipient,">.")
+        nal2.append(1)
+    if len(nal2) == 0:
+        print("НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса <",sender,"> на адрес <",recipient,">.")
+
+send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
+send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
+send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
+send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
